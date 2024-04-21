@@ -7,7 +7,7 @@ app = Flask(__name__)
 def process_video(video_id):
     video = request.files.get("video")
     filename = f"{video_id}.mp4"
-    command = f" ./videoProcessing.sh {video_id}.mp4"
+    command = f"sudo ./videoProcessing.sh {video_id}.mp4"
     if not video:
         raise errors.BadRequestApi("No video has been provided")
     try:
