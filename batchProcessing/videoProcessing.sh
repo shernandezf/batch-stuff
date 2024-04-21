@@ -9,7 +9,7 @@ fi
 input_video="$1"
 
 # Final filename
-processed_folder="../app/videos/processed"
+processed_folder="./"
 output_video="${processed_folder}/$(basename ${input_video%.*}_processed.mp4)"
 
 # Create processed directory if it does not exist
