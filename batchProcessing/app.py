@@ -5,15 +5,9 @@ app = Flask(__name__)
 
 @app.route("/procesarVideo/<video_id>", methods=["POST"])
 def process_video(video_id):
-    video = request.files.get("video")
+   
     filename = f"{video_id}.mp4"
-    command = f"sudo ./videoProcessing.sh {video_id}.mp4"
-    if not video:
-        raise errors.BadRequestApi("No video has been provided")
-    try:
-        video.save(filename)
-    except Exception as e:
-        raise errors.GeneralError(f"An error has ben ocurred: {e}")   
+    command = f"sudo ./videoProcessing.sh  /mnt/nfs/general/unprocessed/{video_id}.mp4"
     try:
         result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         response = {
